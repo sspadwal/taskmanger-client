@@ -50,7 +50,7 @@ const TaskForm = ({ selectedTask, setSelectedTask, onTaskCreated }) => {
 
             if (selectedTask) {
                 response = await fetch(
-                    `https://taskmanager-server-1-frwy.onrender.com/api/tasks/${selectedTask._id}`, // Updated URL
+                    `https://taskmanager-server-1-frwy.onrender.com/api/tasks/${selectedTask._id}`,
                     {
                         method: 'PUT',
                         ...config,
@@ -59,7 +59,7 @@ const TaskForm = ({ selectedTask, setSelectedTask, onTaskCreated }) => {
                 );
             } else {
                 response = await fetch(
-                    'https://taskmanager-server-1-frwy.onrender.com/api/tasks', // Updated URL (assuming /post isn't needed)
+                    'https://taskmanager-server-1-frwy.onrender.com/api/tasks',
                     {
                         method: 'POST',
                         ...config,
@@ -88,6 +88,7 @@ const TaskForm = ({ selectedTask, setSelectedTask, onTaskCreated }) => {
         }
     };
 
+    // Rest of the component (form JSX) remains unchanged...
     return (
         <div className="task-form-container">
             <form onSubmit={handleSubmit} className="task-form-inline">
