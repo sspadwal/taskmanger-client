@@ -13,9 +13,10 @@ const Dashboard = () => {
         const fetchTasks = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = await axios.get('http://localhost:5000/api/tasks', {
-                    headers: { Authorization: `Bearer ${token}` },
-                });
+                const response = await axios.get(
+                    'https://taskmanager-server-1-frwy.onrender.com/api/tasks', // Updated URL
+                    { headers: { Authorization: `Bearer ${token}` } }
+                );
                 setTasks(response.data);
             } catch (err) {
                 setError('Error fetching tasks');
@@ -36,9 +37,10 @@ const Dashboard = () => {
     const handleDelete = async (taskId) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
+            await axios.delete(
+                `https://taskmanager-server-1-frwy.onrender.com/api/tasks/${taskId}`, // Updated URL
+                { headers: { Authorization: `Bearer ${token}` } }
+            );
             setTasks(tasks.filter((task) => task._id !== taskId));
         } catch (err) {
             setError('Error deleting task');
@@ -57,12 +59,10 @@ const Dashboard = () => {
         <div className="dashboard">
             <div className="dashboard-header">
                 <h1>Dashboard</h1>
-                
             </div>
             {error && <p className="error">{error}</p>}
 
             <div className="dashboard-container">
-                {/* Task Form (Horizontal) */}
                 <div className="task-form-container">
                     <TaskForm
                         selectedTask={selectedTask}
@@ -70,8 +70,6 @@ const Dashboard = () => {
                         onTaskCreated={onTaskCreated}
                     />
                 </div>
-
-                {/* Task List (Vertical) */}
                 <div className="task-list-container">
                     <h2>Your Tasks</h2>
                     <ul className="task-list">

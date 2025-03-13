@@ -12,12 +12,11 @@ const Register = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/register', {
-                username,
-                password,
-            });
+            const response = await axios.post(
+                'https://taskmanager-server-1-frwy.onrender.com/api/auth/register', // Updated URL
+                { username, password }
+            );
 
-            // Redirect to the login page after successful registration
             navigate('/login');
         } catch (err) {
             setError('Error registering user');
@@ -26,31 +25,31 @@ const Register = () => {
 
     return (
         <section className="resistration-section">
-        <div className="auth-form">
-            <h1>Register</h1>
-            {error && <p className="error">{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Username:</label>
-                    <input
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </div>
-                <button type="submit">Register</button>
-            </form>
-        </div>
+            <div className="auth-form">
+                <h1>Register</h1>
+                {error && <p className="error">{error}</p>}
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label>Username:</label>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label>Password:</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
         </section>
     );
 };

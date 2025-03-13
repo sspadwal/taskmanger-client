@@ -49,17 +49,23 @@ const TaskForm = ({ selectedTask, setSelectedTask, onTaskCreated }) => {
             };
 
             if (selectedTask) {
-                response = await fetch(`http://localhost:5000/api/tasks/${selectedTask._id}`, {
-                    method: 'PUT',
-                    ...config,
-                    body: JSON.stringify(task),
-                });
+                response = await fetch(
+                    `https://taskmanager-server-1-frwy.onrender.com/api/tasks/${selectedTask._id}`, // Updated URL
+                    {
+                        method: 'PUT',
+                        ...config,
+                        body: JSON.stringify(task),
+                    }
+                );
             } else {
-                response = await fetch('http://localhost:5000/api/tasks/post', {
-                    method: 'POST',
-                    ...config,
-                    body: JSON.stringify(task),
-                });
+                response = await fetch(
+                    'https://taskmanager-server-1-frwy.onrender.com/api/tasks', // Updated URL (assuming /post isn't needed)
+                    {
+                        method: 'POST',
+                        ...config,
+                        body: JSON.stringify(task),
+                    }
+                );
             }
 
             const data = await response.json();
