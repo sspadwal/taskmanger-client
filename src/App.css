@@ -49,23 +49,24 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px;
-    /* Reduced padding for smaller screens */
+    padding: 1rem 2rem;
+    /* Use rem for scalability */
     background: linear-gradient(135deg, #2c3e50, #34495e);
     color: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
-    max-width: 100%;
-    /* Prevent overflow */
-    overflow-x: hidden;
-    /* Hide horizontal overflow */
+    width: 100%;
+    /* Ensure it spans full width */
+    box-sizing: border-box;
+    /* Include padding in width */
 }
 
+/* Logo */
 .navbar-logo img.logo {
-    width: 150px;
-    /* Slightly reduced for smaller screens */
+    width: clamp(100px, 10vw, 150px);
+    /* Scales between 100px and 150px based on viewport */
     height: auto;
     transition: transform 0.3s ease;
 }
@@ -74,24 +75,19 @@ body {
     transform: scale(1.1);
 }
 
-
-/* Hamburger Button Styles */
-
+/* Hamburger Button */
 .hamburger-btn {
     display: none;
+    /* Hidden by default on larger screens */
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px;
-    /* Reduced padding */
+    padding: 0.5rem;
     z-index: 1001;
-    margin-right: 30px;
-    /* Ensure it doesn't push content too far */
 }
 
 .hamburger-icon {
     width: 25px;
-    /* Reduced size for better fit */
     height: 3px;
     background: #fff;
     position: relative;
@@ -110,7 +106,6 @@ body {
 
 .hamburger-icon::before {
     top: -8px;
-    /* Adjusted for smaller scale */
 }
 
 .hamburger-icon::after {
@@ -123,21 +118,17 @@ body {
 
 .hamburger-icon.open::before {
     transform: rotate(45deg) translate(6px, 6px);
-    /* Adjusted for smaller size */
 }
 
 .hamburger-icon.open::after {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-
 /* Navbar Links */
-
 .navbar-links {
     display: flex;
     list-style: none;
-    gap: 15px;
-    /* Reduced gap */
+    gap: 1rem;
     margin: 0;
     padding: 0;
     transition: all 0.3s ease;
@@ -152,9 +143,7 @@ body {
     color: #fff;
     text-decoration: none;
     font-size: 1rem;
-    /* Slightly smaller font */
-    padding: 8px 12px;
-    /* Reduced padding */
+    padding: 0.5rem 0.75rem;
     border-radius: 20px;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -167,11 +156,11 @@ body {
 .username {
     color: #fff;
     font-size: 1rem;
-    padding: 8px 12px;
+    padding: 0.5rem 0.75rem;
 }
 
 .nav-button {
-    padding: 8px 12px;
+    padding: 0.5rem 0.75rem;
     background: linear-gradient(135deg, #e74c3c, #c0392b);
     color: #fff;
     border: none;
@@ -187,90 +176,143 @@ body {
     box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
 }
 
+/* Media Queries for Responsiveness */
 
-/* Media Queries for Mobile */
-
+/* Tablets and Smaller Devices (max-width: 768px) */
 @media (max-width: 768px) {
     .hamburger-btn {
         display: block;
     }
+
     .navbar {
-        padding: 10px;
-        flex-direction: row;
-        /* Keep row layout but adjust below */
-        align-items: center;
-        /* Further reduced padding */
+        padding: 0.75rem 1rem;
+        flex-wrap: wrap;
+        /* Allow wrapping if needed */
     }
+
     .navbar-logo {
-        order: 1;
-        /* Logo first */
+        flex: 1;
     }
+
     .hamburger-btn {
-        order: 2;
-        /* Hamburger last */
+        margin-right: 0;
+        /* Remove extra margin */
     }
+
     .navbar-links {
         position: fixed;
         top: 0;
-        right: -80%;
-        /* Reduced width to 80% of screen */
-        width: 80%;
-        /* Fit within screen */
+        right: -100%;
+        /* Start fully off-screen */
+        width: 70%;
+        /* Reduced width for smaller screens */
         max-width: 300px;
-        /* Cap the width */
         height: 100vh;
         background: linear-gradient(135deg, #2c3e50, #34495e);
         flex-direction: column;
-        padding: 70px 15px 15px;
-        /* Adjusted padding */
+        padding: 4rem 1rem 1rem;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        transition: right 0.3s ease;
+        /* Smooth slide-in */
     }
+
     .navbar-links.active {
         right: 0;
+        /* Slide in when active */
     }
+
     .navbar-links li {
         width: 100%;
-        margin: 8px 0;
-        /* Reduced margin */
+        margin: 0.5rem 0;
     }
+
     .nav-link,
-    .nav-button {
-        width: 100%;
-        text-align: center;
-        padding: 10px;
-    }
+    .nav-button,
     .username {
         width: 100%;
         text-align: center;
-        padding: 10px;
+        padding: 0.75rem;
+    }
+
+    .username {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 20px;
     }
 }
 
-@media (max-width: 480px) {
+/* Small Phones (max-width: 600px) - Includes Realme 5i */
+@media (max-width: 600px) {
     .navbar {
-        padding: 6px 8px;
+        padding: 0.5rem 0.75rem;
     }
+
     .navbar-logo img.logo {
-        width: 70px;
+        width: clamp(70px, 8vw, 100px);
+        /* Smaller logo for small screens */
     }
+
     .hamburger-btn {
-        padding: 6px;
+        padding: 0.4rem;
     }
+
     .hamburger-icon {
         width: 20px;
     }
+
     .hamburger-icon::before,
     .hamburger-icon::after {
         width: 20px;
     }
+
     .navbar-links {
-        width: 70%;
+        width: 80%;
+        /* Slightly wider for very small screens */
         max-width: 250px;
+        padding-top: 3.5rem;
+        /* Adjust padding for smaller header */
+    }
+
+    .nav-link,
+    .nav-button,
+    .username {
+        font-size: 0.9rem;
+        /* Slightly smaller text */
+        padding: 0.6rem;
     }
 }
 
+/* Very Small Phones (max-width: 400px) - Extra small screens */
+@media (max-width: 400px) {
+    .navbar {
+        padding: 0.4rem 0.5rem;
+    }
+
+    .navbar-logo img.logo {
+        width: clamp(50px, 6vw, 70px);
+        /* Even smaller logo */
+    }
+
+    .hamburger-icon {
+        width: 18px;
+    }
+
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+        width: 18px;
+    }
+
+    .navbar-links {
+        width: 85%;
+        max-width: 200px;
+    }
+
+    .nav-link,
+    .nav-button,
+    .username {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+}
 
 /* Home Page Styles */
 
@@ -673,6 +715,7 @@ footer p {
         align-items: flex-start;
         gap: 15px;
     }
+
     .form-field {
         flex-direction: column;
         /* Stack label and field vertically */
@@ -682,22 +725,26 @@ footer p {
         gap: 5px;
         /* Space between label and field */
     }
+
     .checkbox-field {
         flex-direction: row;
         /* Keep checkbox and label side by side */
         align-items: center;
         gap: 8px;
     }
+
     .task-form-container input[type="text"],
     .task-form-container textarea,
     .task-form-container select {
         width: 100%;
         /* Full width for inputs, textarea, and select */
     }
+
     .task-form-container textarea {
         min-height: 80px;
         /* Slightly smaller but still usable */
     }
+
     .task-form-container button.create-btn {
         width: 100%;
         /* Full width for button */
@@ -812,19 +859,24 @@ footer p {
         align-items: flex-start;
         gap: 10px;
     }
+
     .logout-btn {
         width: 100%;
         padding: 12px;
     }
+
     .task-item {
         padding: 15px;
     }
+
     .task-item h3 {
         font-size: 1.2rem;
     }
+
     .task-item p {
         font-size: 0.9rem;
     }
+
     .task-item button {
         padding: 6px 12px;
         font-size: 0.8rem;
@@ -835,9 +887,11 @@ footer p {
     .dashboard {
         padding: 15px;
     }
+
     .task-list-container {
         padding: 15px;
     }
+
     .task-list-container h2 {
         font-size: 1.3rem;
     }
