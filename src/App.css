@@ -50,7 +50,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    /* Use rem for scalability */
+    /* Default padding for larger screens */
     background: linear-gradient(135deg, #2c3e50, #34495e);
     color: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -58,9 +58,9 @@ body {
     top: 0;
     z-index: 1000;
     width: 100%;
-    /* Ensure it spans full width */
     box-sizing: border-box;
-    /* Include padding in width */
+    min-height: 60px;
+    /* Added minimum height for consistency */
 }
 
 /* Logo */
@@ -177,6 +177,91 @@ body {
 }
 
 /* Media Queries for Responsiveness */
+
+/* Tablets and Smaller Devices (max-width: 400px) */
+
+@media (max-width: 400px) {
+    .navbar {
+        padding: 0.6rem 1.25rem;
+        /* Increased padding-left and padding-right */
+        min-height: 65px;
+        /* Slightly taller than before, but not too big */
+    }
+
+    .navbar-logo img.logo {
+        width: clamp(50px, 6vw, 70px);
+    }
+
+    .hamburger-icon {
+        width: 18px;
+    }
+
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+        width: 18px;
+    }
+
+    .navbar-links {
+        width: 85%;
+        max-width: 200px;
+        padding-top: 4rem;
+        /* Adjusted for taller navbar */
+    }
+
+    .nav-link,
+    .nav-button,
+    .username {
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+}
+
+
+/* Tablets and Smaller Devices (max-width: 600px) */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0.75rem 1.5rem;
+        /* Increased padding-left and padding-right */
+        min-height: 70px;
+        /* Increased height for mobile */
+    }
+
+    .navbar-logo img.logo {
+        width: clamp(70px, 8vw, 100px);
+    }
+
+    .hamburger-btn {
+        padding: 0.4rem;
+        margin-right: 0.5rem;
+        /* Added margin to move it away from the right edge */
+    }
+
+    .hamburger-icon {
+        width: 20px;
+    }
+
+    .hamburger-icon::before,
+    .hamburger-icon::after {
+        width: 20px;
+    }
+
+    .navbar-links {
+        width: 80%;
+        max-width: 250px;
+        padding-top: 4rem;
+        /* Adjusted to account for taller navbar */
+    }
+
+    .nav-link,
+    .nav-button,
+    .username {
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+}
+
+
+
 
 /* Tablets and Smaller Devices (max-width: 768px) */
 @media (max-width: 768px) {
