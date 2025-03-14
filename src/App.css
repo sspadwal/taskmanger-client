@@ -182,14 +182,20 @@ body {
 
 @media (max-width: 400px) {
     .navbar {
-        padding: 0.6rem 1.25rem;
-        /* Increased padding-left and padding-right */
+        padding: 0.6rem 1.5rem;
+        /* Increased padding-right from 1.25rem to 1.5rem for extra space */
         min-height: 65px;
-        /* Slightly taller than before, but not too big */
     }
 
     .navbar-logo img.logo {
-        width: clamp(50px, 6vw, 70px);
+        width: clamp(70px, 8vw, 90px);
+        /* Increased min from 50px to 70px, max from 70px to 90px */
+    }
+
+    .hamburger-btn {
+        padding: 0.4rem;
+        margin-right: 1rem;
+        /* Increased from no margin to 1rem for more space */
     }
 
     .hamburger-icon {
@@ -205,7 +211,6 @@ body {
         width: 85%;
         max-width: 200px;
         padding-top: 4rem;
-        /* Adjusted for taller navbar */
     }
 
     .nav-link,
@@ -221,19 +226,19 @@ body {
 @media (max-width: 600px) {
     .navbar {
         padding: 0.75rem 1.5rem;
-        /* Increased padding-left and padding-right */
+        /* Already good */
         min-height: 70px;
-        /* Increased height for mobile */
     }
 
     .navbar-logo img.logo {
-        width: clamp(70px, 8vw, 100px);
+        width: clamp(90px, 10vw, 120px);
+        /* Increased min from 70px to 90px, max from 100px to 120px */
     }
 
     .hamburger-btn {
         padding: 0.4rem;
-        margin-right: 0.5rem;
-        /* Added margin to move it away from the right edge */
+        margin-right: 1rem;
+        /* Increased from 0.5rem to 1rem for more space from right edge */
     }
 
     .hamburger-icon {
@@ -249,7 +254,6 @@ body {
         width: 80%;
         max-width: 250px;
         padding-top: 4rem;
-        /* Adjusted to account for taller navbar */
     }
 
     .nav-link,
@@ -259,8 +263,6 @@ body {
         padding: 0.6rem;
     }
 }
-
-
 
 
 /* Tablets and Smaller Devices (max-width: 768px) */
