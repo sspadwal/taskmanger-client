@@ -229,6 +229,8 @@ body {
     }
 }
 
+/* Navbar.css (only showing modified sections) */
+
 /* Small Phones (max-width: 600px) - Includes Realme 5i */
 @media (max-width: 600px) {
     .navbar {
@@ -237,14 +239,13 @@ body {
     }
 
     .navbar-logo img.logo {
-        width: clamp(90px, 10vw, 120px);
-        /* Larger logo for mobile */
+        width: clamp(110px, 12vw, 140px);
+        /* Increased: min 110px (was 90px), max 140px (was 120px) */
     }
 
     .hamburger-btn {
         padding: 0.4rem;
         margin-right: 1rem;
-        /* Space from right edge */
     }
 
     .hamburger-icon {
@@ -260,7 +261,6 @@ body {
         width: 80%;
         max-width: 250px;
         padding-top: 4.5rem;
-        /* Adjusted for taller navbar */
     }
 
     .nav-link,
@@ -279,14 +279,13 @@ body {
     }
 
     .navbar-logo img.logo {
-        width: clamp(70px, 8vw, 90px);
-        /* Slightly smaller but still visible */
+        width: clamp(90px, 10vw, 110px);
+        /* Increased: min 90px (was 70px), max 110px (was 90px) */
     }
 
     .hamburger-btn {
         padding: 0.4rem;
         margin-right: 1rem;
-        /* Consistent spacing */
     }
 
     .hamburger-icon {
